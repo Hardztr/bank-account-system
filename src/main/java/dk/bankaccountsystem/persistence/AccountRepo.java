@@ -26,7 +26,7 @@ public class AccountRepo {
         return accountEntity.getAccountNumber();
     }
 
-    public Account find(UUID accountNumber) {
+    public Account getAccount(UUID accountNumber) {
         var account = accountDao.find(accountNumber);
         return Account.builder()
                 .accountNumber(account.getAccountNumber())

@@ -1,5 +1,6 @@
 package dk.bankaccountsystem.controller;
 
+import dk.bankaccountsystem.model.Account;
 import dk.bankaccountsystem.model.input.AccountInput;
 import dk.bankaccountsystem.model.input.BalanceChangeInput;
 import dk.bankaccountsystem.model.input.TransferBalanceInput;
@@ -56,6 +57,12 @@ public class AccountController {
     @Path("/{accountNumber}/balance")
     public double getBalance(@PathParam("accountNumber") UUID accountNumber) {
         return accountService.getBalance(accountNumber);
+    }
+
+    @GET
+    @Path("/{accountNumber}")
+    public Account getAccount(@PathParam("accountNumber") UUID accountNumber) {
+        return accountService.getAccount(accountNumber);
     }
 
     @PATCH
