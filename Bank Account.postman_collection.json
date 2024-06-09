@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "6dbda26c-b071-45ce-b87b-ce3fa5fa54f3",
+		"name": "Bank Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21126434"
+	},
+	"item": [
+		{
+			"name": "createAccount",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"accountNumber\", jsonData);\r",
+							"console.log(\"accountNumber: \" + jsonData);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAccount2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"accountNumber2\", jsonData);\r",
+							"console.log(\"accountNumber2: \" + jsonData);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Due\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber2}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBalance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber}}/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber}}",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBalance2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber2}}/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber2}}",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeBalance",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"changeBalanceByAmount\": \"1000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber}}/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber}}",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeBalance2",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"changeBalanceByAmount\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber2}}/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber2}}",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transferBalance",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transferToAccountId\": \"{{accountNumber2}}\",\r\n    \"transferAmount\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber}}/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber}}",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transferBalance2",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transferToAccountId\": \"{{accountNumber}}\",\r\n    \"transferAmount\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8666/accounts/{{accountNumber2}}/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"accounts",
+						"{{accountNumber2}}",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getExchangeRate DKKUSD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/exchange-rates/dkkusd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"exchange-rates",
+						"dkkusd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistoricRates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/exchange-rates/historic-rates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"exchange-rates",
+						"historic-rates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHistoricRatesAsync",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8666/exchange-rates/historic-rates-async",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8666",
+					"path": [
+						"exchange-rates",
+						"historic-rates-async"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "accountNumber",
+			"value": ""
+		},
+		{
+			"key": "accountNumberr2",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "accountNumber2",
+			"value": ""
+		}
+	]
+}
