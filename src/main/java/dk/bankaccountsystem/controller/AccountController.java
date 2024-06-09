@@ -1,11 +1,11 @@
 package dk.bankaccountsystem.controller;
 
+import dk.bankaccountsystem.integration.ExchangeRateClient;
 import dk.bankaccountsystem.model.Account;
 import dk.bankaccountsystem.model.input.AccountInput;
 import dk.bankaccountsystem.model.input.BalanceChangeInput;
 import dk.bankaccountsystem.model.input.TransferBalanceInput;
 import dk.bankaccountsystem.service.AccountService;
-import io.smallrye.common.annotation.Blocking;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -30,17 +30,10 @@ import java.util.UUID;
 @Path("/accounts")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Blocking   //TODO: Måske fjern?
 public class AccountController {
 
     @Inject
     AccountService accountService;
-
-    @GET
-    @Path("/hello")
-    public Response hello() {
-        return Response.ok("Hello World!").build();
-    }
 
     @POST
     @ResponseStatus(201)
@@ -77,7 +70,7 @@ public class AccountController {
     @Path("/{accountNumber}/transfer")
     public double transferBalance(
             @PathParam("accountNumber") UUID accountNumber,
-            @RequestBody(description = "The amount to transfer.") TransferBalanceInput input) {
+            @RequestBody(description = "The amount to transfer, and the account to transfer to.") TransferBalanceInput input) {
         return accountService.transferBalance(accountNumber, input);
     }
 }
